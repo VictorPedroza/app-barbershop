@@ -26,7 +26,7 @@ export const getRootResponse = async () => {
 
 export const registerUser = async (formData) => {
   try {
-    const response = await api.post("/Users/Register", formData);
+    const response = await api.post("/Users/Register", formData, { withCredentials: true });
     return response.data;
   } catch (err) {
     if (err.response) {
@@ -40,7 +40,7 @@ export const registerUser = async (formData) => {
 
 export const loginUser = async (formData) => {
   try {
-    const response = await api.post("/Users/Login", formData);
+    const response = await api.post("/Users/Login", formData, { withCredentials: true });
     return response.data;
   } catch (err) {
     if (err.response) {

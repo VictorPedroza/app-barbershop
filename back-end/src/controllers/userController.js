@@ -115,7 +115,8 @@ module.exports = {
                 httpOnly: false,
                 secure: true,
                 maxAge: 3600000,
-                sameSite: "Strict"
+                sameSite: "Strict",
+                domain: "app-barbershop.onrender.com"
             })
 
             return res.status(200).json({
