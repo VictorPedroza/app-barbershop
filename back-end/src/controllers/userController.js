@@ -60,6 +60,7 @@ module.exports = {
 
             return res.status(200).json({
                 message: "Usuário registrado com sucesso!",
+                token: token,
                 user: {
                     id: rows.insertId,
                     name,
@@ -119,6 +120,7 @@ module.exports = {
 
             return res.status(200).json({
                 message: "Usuário conectado!",
+                token: token,
                 user: {
                     id: user.id,
                     name: user.name,
