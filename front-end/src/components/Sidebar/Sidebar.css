@@ -1,0 +1,159 @@
+aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 280px;
+    background-color: var(--light);
+    padding: 12px 0 12px 8px;
+    transition: all 0.3s ease;
+}
+
+aside .title-aside {
+    width: 90%;
+    color: var(--primary);
+    padding-left: 12px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+aside .title-aside h1 {
+    display: block;
+    font-size: 2rem;
+}
+
+aside .title-aside span {
+    color: var(--dark);
+}
+
+aside .title-aside .icon {
+    font-size: 2.1rem;
+}
+/*Enf of Title*/
+
+aside .menu {
+    padding: 8px 0 8px 12px;
+}
+
+aside .menu .list-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0;
+    gap: 4px;
+}
+
+aside .menu .list-menu a {
+    padding: 6px;
+    border-radius: 24px 0 0 24px;
+}
+
+aside .menu .list-menu a.active {
+    background-color: var(--grey);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+aside .menu .list-menu a.active::after {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: -16px;
+    right: 2px;
+    background-color: transparent;
+    border-radius: 0 0 12px 0;
+    box-shadow: 5px 5px var(--grey);
+}
+
+aside .menu .list-menu a.active::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    bottom: -16px;
+    right: 2px;
+    background-color: transparent;
+    border-radius: 0 12px 0 0;
+    box-shadow: 5px -2px var(--grey);
+}
+
+aside .menu .list-menu a li {
+    padding: 6px 12px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--dark);
+}
+
+aside .menu .list-menu a li .icon {
+    font-size: 1.3rem;
+}
+
+aside .menu .list-menu a li p {
+    font-size: 1.2rem;
+    display: block;
+    font-weight: 500;
+}
+
+aside .menu .list-menu a.active li {
+    background-color: var(--light);
+    color: var(--primary);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    aside {
+        width: 200px;
+    }
+
+    aside .title-aside {
+        padding: 4px;
+    }
+
+    aside .title-aside h1 {
+        font-size: 1.4rem !important;
+    }
+
+    aside .title-aside .icon {
+        font-size: 1.5;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    aside {
+        width: 80px;
+    }
+
+    aside .title-aside {
+        padding: 0;
+        justify-content: center;
+    }
+
+    aside .title-aside .icon {
+        font-size: 1.5rem;
+    }
+
+    aside .title-aside h1 {
+        display: none;
+    }
+    
+    aside .menu .list-menu {
+        gap: 8px;
+    }   
+
+    aside .menu .list-menu a li {
+        justify-content: center;
+    }
+    
+    aside .menu .list-menu a li .icon {
+        font-size: 1.2rem;
+    }
+
+    aside .menu .list-menu a li p {
+        display: none;
+    }
+}
