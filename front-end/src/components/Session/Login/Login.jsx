@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { registerUser } from "../../../service/api";
+import { loginUser } from "../../../service/api";
 
 import '../Session.css';
 
-export const Register = ({ closeModal, switchModal }) => {
+export const Login = ({ closeModal, switchModal }) => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        name: "",
         email: "",
         password: ""
     });
@@ -25,18 +24,18 @@ export const Register = ({ closeModal, switchModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.name || !formData.email || !formData.password) {
+        if (!formData.email || !formData.password) {
             console.log("Todos os campos são obrigatórios!");
         }
 
         try {
-            const response = await registerUser(formData);
+            const response = await loginUser(formData);
             if (response.data) {
                 setError(response.data.message);
             } else {
                 setData(response);
                 navigate(0);
-                closeModal()
+                closeModal();
             }
         } catch (err) {
             console.error("Erro inesperado: ", err)
@@ -45,18 +44,8 @@ export const Register = ({ closeModal, switchModal }) => {
 
     return (
         <div className="form-container">
-            <h2>Registrar-se</h2>
+            <h2>Entrar</h2>
             <form onSubmit={handleSubmit} className="form-content">
-                <div className="item-form">
-                    <label htmlFor="name">Nome:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                </div>
                 <div className="item-form">
                     <label htmlFor="email">Email:</label>
                     <input
@@ -80,10 +69,10 @@ export const Register = ({ closeModal, switchModal }) => {
                     />
                 </div>
                 <button type="submit">Registrar-se</button>
-                <div className="switch">
-                    <p>Já possui conta? <button className="switch-button" onClick={switchModal}>Entrar</button></p>
-                </div>
             </form>
+            <div className="switch">
+                <p>Não possui conta? <button className="switch-button" onClick={switchModal}>Registrar-se</button></p>
+            </div>
         </div>
     );
 };

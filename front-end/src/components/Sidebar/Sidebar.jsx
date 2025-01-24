@@ -1,18 +1,20 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 import './Sidebar.css';
 
 import { FaScissors } from "react-icons/fa6";
-import { IoHome } from "react-icons/io5";
+import { IoHome, IoLogIn, IoLogOut } from "react-icons/io5";
 
-export const Sidebar = ({ handleLogin }) => {
-    const [isLogged, setIsLogged] = useState(false);
+export const Sidebar = ({ handleLogin, isLogged }) => {
+
+    const navigate = useNavigate();
 
     const handleLoggout = () => {
-        console.log("Saindo...")
+        Cookies.remove("token");
+        navigate(0);
     }
-
 
     return (
         <aside>
@@ -32,12 +34,14 @@ export const Sidebar = ({ handleLogin }) => {
             </nav>
             <div className="session">
                 {isLogged ? (
-                    <button onClick={handleLoggout}>
-                        Sair
+                    <button onClick={handleLoggout} className='logout'>
+                        <IoLogIn className='icon' />
+                        <p>Sair</p>
                     </button>
                 ) : (
-                    <button onClick={handleLogin}>
-                        Entrar
+                    <button onClick={handleLogin} className='login'>
+                        <IoLogOut className='icon' />
+                        <p>Entrar</p>
                     </button>
                 )}
             </div>

@@ -105,6 +105,33 @@ aside .menu .list-menu a.active li {
     transition: all 0.3s ease;
 }
 
+aside .session {
+    display: flex;
+    padding: 8px;
+}
+
+aside .session button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+aside .session button p {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+aside .session button.login {
+    color: var(--success);
+}
+
+aside .session button.logout {
+    color: var(--danger);
+}
+
 @media screen and (max-width: 768px) {
     aside {
         width: 200px;

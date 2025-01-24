@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 
-import { getRootResponse } from "../../service/api";
+import { getRootResponse, getUser } from "../../service/api";
 
 export const Home = () => {
     const [data, setData] = useState('');
     const [error, setError] = useState('');
+
+    const [user, setUser] = useState(null);
+
+    const token = Cookies.get("token");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,17 +25,46 @@ export const Home = () => {
             }
         }
 
-        fetchData()
-    },[])
+        const fetchUser = async () => {
+            try {
+                const response = await getUser(token);
+                if (response.data) {
+                    setError(response.data.message);
+                } else {
+                    setUser(response.user);
+                }
+            } catch (err) {
+                console.error("Erro inseperado!", err);
+            }
 
-    return(
+        }
+
+        fetchUser();
+        fetchData();
+    }, [])
+
+    return (
         <div className="main-container">
             <h1>Home</h1>
-            {error ? (
-                <span>{error}</span>
-            ) : (
-                <p>{data}</p>
-            )}
+            <div>
+                {error ? (
+                    <p>{error}</p>
+                ) : (
+                    <div>
+                        <p>{data}</p>
+                        {user && (
+                            <ul>
+                                <li><strong>ID: </strong>{user.id}</li>
+                                <li><strong>Nome: </strong>{user.name}</li>
+                                <li><strong>Email: </strong>{user.email}</li>
+                                <li><strong>Status: </strong>{user.status}</li>
+                                <li><strong>Acesso: </strong>{user.rule}</li>
+                            </ul>
+                        )}
+                    </div>
+
+                )}
+            </div>
         </div>
     )
 }
