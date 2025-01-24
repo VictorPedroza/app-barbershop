@@ -44,6 +44,9 @@ export const Register = ({ closeModal, switchModal }) => {
         } catch (err) {
             console.error("Erro inesperado: ", err)
         }
+
+        console.log(data);
+        console.log(error);
     };
 
     return (
