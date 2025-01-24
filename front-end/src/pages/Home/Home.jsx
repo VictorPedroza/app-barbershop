@@ -28,6 +28,7 @@ export const Home = () => {
         const fetchUser = async () => {
             try {
                 const response = await getUser(token);
+                console.log(token);
                 if (response.data) {
                     setError(response.data.message);
                 } else {

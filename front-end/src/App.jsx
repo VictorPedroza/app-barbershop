@@ -30,6 +30,7 @@ function App() {
       if (token) {
         try {
           const response = await getUser(token);
+          console.log(token)
           if (response.data) {
             setIsLogged(false); 
           } else {
