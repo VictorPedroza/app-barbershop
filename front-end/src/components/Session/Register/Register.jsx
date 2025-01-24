@@ -6,6 +6,9 @@ import { registerUser } from "../../../service/api";
 import '../Session.css';
 
 export const Register = ({ closeModal, switchModal }) => {
+    const [data, setData] = useState({});
+    const [error, setError] = useState({});
+
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
