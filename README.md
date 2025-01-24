@@ -1,4 +1,3 @@
-App BarberShop
 # Projeto da Barbearia
 
 ## Sobre o Projeto:
