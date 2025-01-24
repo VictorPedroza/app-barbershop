@@ -6,12 +6,8 @@ import './Sidebar.css';
 import { FaScissors } from "react-icons/fa6";
 import { IoHome } from "react-icons/io5";
 
-export const Sidebar = () => {
+export const Sidebar = ({ handleLogin }) => {
     const [isLogged, setIsLogged] = useState(false);
-
-    const handleLogin = () => {
-        console.log("Entrando...")
-    }
 
     const handleLoggout = () => {
         console.log("Saindo...")
