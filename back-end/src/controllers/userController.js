@@ -48,7 +48,7 @@ module.exports = {
 
                 res.cookie("token", token, {
                     httpOnly: false,
-                    secure: false,
+                    secure: true,
                     maxAge: 3600000,
                     sameSite: "Strict",
                 })
@@ -113,7 +113,7 @@ module.exports = {
 
             res.cookie("token", token, {
                 httpOnly: false,
-                secure: false,
+                secure: true,
                 maxAge: 3600000,
                 sameSite: "Strict"
             })
