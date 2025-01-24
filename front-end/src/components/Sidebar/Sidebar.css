@@ -122,6 +122,7 @@ aside .session button {
 aside .session button p {
     font-size: 1.3rem;
     font-weight: 500;
+    display: block;
 }
 
 aside .session button.login {
@@ -181,6 +182,10 @@ aside .session button.logout {
     }
 
     aside .menu .list-menu a li p {
+        display: none;
+    }
+
+    aside .session button p {
         display: none;
     }
 }
